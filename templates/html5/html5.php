@@ -82,6 +82,24 @@ if ( $template_area == 'top' ) {
     <script src="/lib/js/modernizr-1.7.min.js"></script>
 </head>
 <body>
+<?php
+    if ($google_analytics_account) {
+?>
+<script>
+
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '<?=$google_analytics_account?>', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<?php
+    }
+?>
+
 <div id="skybox" style="display:none;position:absolute;z-index:9999;"></div>
 <div id="overlay" style="display:none;position:absolute;z-index:5000"></div>
 <div id="body">
@@ -114,18 +132,8 @@ if ( $template_area == 'top' ) {
 <script src="/lib/js/dd_belatedpng.js"></script>
 <script> DD_belatedPNG.fix('img, .png_bg');</script>
 <![endif]-->
-<?php
-    if ( $google_analytics_account ) {
-?>
-<script>
-    var _gaq=[['_setAccount','<?=$google_analytics_account?>'],['_trackPageview']]; // Change UA-XXXXX-X to be your site's ID
-    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
-    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-    s.parentNode.insertBefore(g,s)}(document,'script'));
-</script>
-<?php
-    }//google analytics
 
+<?php
     global $db, $dbw, $db_host, $dbw_host, $db_error;
 
 ?>
